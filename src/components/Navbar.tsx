@@ -17,7 +17,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -35,24 +34,24 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-blush">
-      <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-paper/95 backdrop-blur-sm border-b border-rose/20">
+      <div className="max-w-6xl mx-auto px-8 h-20 flex items-center justify-between">
         <Link
           href="/"
-          className="font-heading text-2xl font-bold text-berry tracking-tight"
+          className="font-heading text-2xl font-light text-ink tracking-tight"
         >
-          Berry&#39;s Cafe
+          Berry&#8217;s Cafe
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`font-body text-sm font-bold uppercase tracking-widest transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-berry focus-visible:outline-offset-4 rounded-sm ${
+              className={`font-nav text-xs uppercase tracking-[0.2em] transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-berry focus-visible:outline-offset-4 rounded-sm ${
                 pathname === l.href
                   ? "text-berry"
-                  : "text-charcoal/80 hover:text-berry"
+                  : "text-ink/50 hover:text-ink"
               }`}
               aria-current={pathname === l.href ? "page" : undefined}
             >
@@ -62,20 +61,12 @@ export default function Navbar() {
         </div>
 
         <button
-          ref={buttonRef}
-          className="md:hidden text-charcoal focus-visible:outline-2 focus-visible:outline-berry focus-visible:outline-offset-2 rounded-sm"
+          className="md:hidden text-ink focus-visible:outline-1 focus-visible:outline-berry focus-visible:outline-offset-2 rounded-sm"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             {open ? (
               <path d="M18 6L6 18M6 6l12 12" />
             ) : (
@@ -92,18 +83,18 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden bg-cream border-b border-blush"
+            className="md:hidden overflow-hidden bg-paper border-b border-rose/20"
           >
-            <div className="px-5 py-4 flex flex-col gap-4">
+            <div className="px-8 py-6 flex flex-col gap-5">
               {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`font-body text-sm font-bold uppercase tracking-widest transition-colors focus-visible:outline-2 focus-visible:outline-berry rounded-sm ${
+                  className={`font-nav text-xs uppercase tracking-[0.2em] transition-colors ${
                     pathname === l.href
                       ? "text-berry"
-                      : "text-charcoal/80 hover:text-berry"
+                      : "text-ink/50 hover:text-ink"
                   }`}
                   aria-current={pathname === l.href ? "page" : undefined}
                 >

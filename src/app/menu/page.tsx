@@ -74,24 +74,24 @@ export default function MenuPage() {
   const [active, setActive] = useState<Category>("hot-coffee");
 
   return (
-    <main className="pt-24 pb-20 bg-cream min-h-screen">
-      <div className="max-w-6xl mx-auto px-5">
+    <main className="pt-32 pb-24 bg-paper min-h-screen">
+      <div className="max-w-6xl mx-auto px-8">
         <motion.div
-          className="text-center mb-12"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-charcoal mb-3">
-            Our Menu
+          <h2 className="font-nav text-xs uppercase tracking-[0.25em] text-ink/30 mb-4">
+            Menu
+          </h2>
+          <h1 className="font-heading text-4xl md:text-5xl font-light text-ink">
+            What we serve
           </h1>
-          <p className="font-body text-charcoal/70 max-w-lg mx-auto">
-            Handcrafted with love &mdash; every item tells a story
-          </p>
         </motion.div>
 
         <div
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="flex flex-wrap gap-1 mb-14"
           role="tablist"
           aria-label="Menu categories"
         >
@@ -102,10 +102,10 @@ export default function MenuPage() {
               role="tab"
               aria-selected={active === cat.id}
               aria-controls={`menu-panel-${cat.id}`}
-              className={`font-body text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-berry focus-visible:outline-offset-2 ${
+              className={`font-nav text-xs uppercase tracking-[0.2em] px-5 py-2.5 transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-berry ${
                 active === cat.id
-                  ? "bg-berry text-white shadow-md"
-                  : "bg-white text-charcoal/70 hover:text-berry border border-berry/10"
+                  ? "text-berry bg-rose/10"
+                  : "text-ink/30 hover:text-ink/60"
               }`}
             >
               {cat.label}
@@ -118,33 +118,29 @@ export default function MenuPage() {
             key={active}
             id={`menu-panel-${active}`}
             role="tabpanel"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             {menu[active].map((item, i) => (
               <motion.div
                 key={item.name}
-                className="bg-white rounded-2xl p-6 border border-berry/5 hover:border-berry/20 transition-colors duration-300"
-                initial={{ opacity: 0, y: 20 }}
+                className="border-b border-rose/20 pb-4"
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow: "0 0 25px rgba(139, 26, 74, 0.12)",
-                }}
+                transition={{ duration: 0.3, delay: i * 0.03 }}
               >
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-heading text-lg font-bold text-charcoal">
+                <div className="flex items-baseline justify-between gap-3 mb-1">
+                  <h3 className="font-heading text-lg font-light text-ink/80">
                     {item.name}
                   </h3>
-                  <span className="font-heading font-bold text-berry text-sm whitespace-nowrap ml-3">
+                  <span className="font-body text-sm text-ink/30 shrink-0">
                     {item.price}
                   </span>
                 </div>
-                <p className="font-body text-sm text-charcoal/70">
+                <p className="font-body text-sm text-ink/40">
                   {item.desc}
                 </p>
               </motion.div>

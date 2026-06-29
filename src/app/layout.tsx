@@ -1,25 +1,30 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato } from "next/font/google";
+import { Cormorant_Garamond, Space_Grotesk, Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-heading",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-nav",
 });
 
 const lato = Lato({
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
+  weight: ["400", "700"],
   variable: "--font-body",
 });
 
 export const metadata: Metadata = {
-  title: "Berry's Cafe | Brewing happiness, one cup at a time",
+  title: "Berry\u2019s Cafe | GIDC, Ankleshwar",
   description:
-    "Fresh coffee & berrylicious treats in GIDC Ankleshwar. Sip. Savor. Repeat.",
+    "A quiet corner for coffee and conversation in GIDC Ankleshwar.",
 };
 
 export default function RootLayout({
@@ -30,12 +35,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${lato.variable} scroll-smooth`}
+      className={`${cormorant.variable} ${spaceGrotesk.variable} ${lato.variable} scroll-smooth`}
     >
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="min-h-screen flex flex-col antialiased bg-paper text-ink">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-berry focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none font-body text-sm font-bold"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-berry focus:text-white focus:px-4 focus:py-2 focus:rounded-sm focus:outline-none font-nav text-sm font-bold"
         >
           Skip to main content
         </a>
@@ -44,7 +49,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <WhatsAppButton />
       </body>
     </html>
   );
