@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const images = [
-  { src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80", alt: "Coffee art", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&q=80", alt: "Berry dessert", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80", alt: "Latte art", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80", alt: "Dessert", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600&q=80", alt: "Coffee shop interior", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80", alt: "Pizza snack", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=600&q=80", alt: "Coffee beans", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80", alt: "Berry drink", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80", alt: "Croissant", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
-  { src: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=80", alt: "Cafe ambiance", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=85&auto=format&fit=crop", alt: "Latte art on wooden table", blur: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=85&auto=format&fit=crop", alt: "Fresh berries in a ceramic bowl", blur: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85&auto=format&fit=crop", alt: "Pour over coffee being brewed", blur: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=85&auto=format&fit=crop", alt: "Buttery croissant on dark plate", blur: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800&q=85&auto=format&fit=crop", alt: "Warm cafe interior with natural light", blur: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=85&auto=format&fit=crop", alt: "Morning coffee by the window", blur: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=800&q=85&auto=format&fit=crop", alt: "Coffee beans scattered on surface", blur: "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=85&auto=format&fit=crop", alt: "Refreshing berry drink with mint", blur: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&q=85&auto=format&fit=crop", alt: "Decadent chocolate dessert", blur: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=20&q=10&auto=format&fit=crop" },
+  { src: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=85&auto=format&fit=crop", alt: "Wood-fired pizza with fresh toppings", blur: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=20&q=10&auto=format&fit=crop" },
 ];
 
 export default function GalleryPage() {
