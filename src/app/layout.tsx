@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Space_Grotesk, Inter } from "next/font/google";
+import { Cormorant_Garamond, Space_Grotesk, Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -16,15 +15,16 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-nav",
 });
 
-const inter = Inter({
+const lato = Lato({
   subsets: ["latin"],
+  weight: ["400", "700"],
   variable: "--font-body",
 });
 
 export const metadata: Metadata = {
-  title: "Sweet Butterfly | Ankleshwar's Finest Dessert Cafe",
+  title: "Berry\u2019s Cafe | GIDC, Ankleshwar",
   description:
-    "Ankleshwar's highest rated dessert cafe. Waffles, Crepes, Shakes & Custom Cakes. Rated 4.8/5.",
+    "A quiet corner for coffee and conversation in GIDC Ankleshwar.",
 };
 
 export default function RootLayout({
@@ -35,12 +35,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${spaceGrotesk.variable} ${inter.variable} scroll-smooth`}
+      className={`${cormorant.variable} ${spaceGrotesk.variable} ${lato.variable} scroll-smooth`}
     >
-      <body className="min-h-screen flex flex-col antialiased bg-midnight text-text overflow-x-hidden">
+      <body className="min-h-screen flex flex-col antialiased bg-paper text-ink">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-gold focus:text-midnight focus:px-6 focus:py-3 focus:font-nav focus:text-xs focus:tracking-[4px] focus:uppercase focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-berry focus:text-white focus:px-4 focus:py-2 focus:rounded-sm focus:outline-none font-nav text-sm font-bold"
         >
           Skip to main content
         </a>
@@ -49,7 +49,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <WhatsAppButton />
       </body>
     </html>
   );

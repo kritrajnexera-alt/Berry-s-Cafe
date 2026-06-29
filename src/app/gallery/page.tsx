@@ -1,89 +1,63 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const images = [
-  { src: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80", alt: "Dessert" },
-  { src: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80", alt: "Cake" },
-  { src: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80", alt: "Coffee" },
-  { src: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=600&q=80", alt: "Waffles" },
-  { src: "https://images.unsplash.com/photo-1570197785657-d9fe21a8e8e8?w=600&q=80", alt: "Ice Cream" },
-  { src: "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=600&q=80", alt: "Shakes" },
-  { src: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=80", alt: "Crepes" },
-  { src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80", alt: "Berries" },
+  { src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80", alt: "Coffee art", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&q=80", alt: "Berry dessert", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80", alt: "Latte art", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80", alt: "Dessert", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600&q=80", alt: "Coffee shop interior", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80", alt: "Pizza snack", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=600&q=80", alt: "Coffee beans", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80", alt: "Berry drink", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80", alt: "Croissant", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
+  { src: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=80", alt: "Cafe ambiance", blur: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23FDFAF6' width='600' height='600'/%3E%3C/svg%3E" },
 ];
 
 export default function GalleryPage() {
-  const prefersReduced = useReducedMotion();
   return (
-    <section className="relative bg-midnight overflow-hidden pt-28">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 sm:py-24">
+    <main className="pt-40 pb-32 bg-paper min-h-screen">
+      <div className="max-w-6xl mx-auto px-12 md:px-24">
         <motion.div
+          className="mb-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="font-nav text-xs tracking-[4px] uppercase text-gold mb-4">
-            Visual Stories
-          </h2>
-          <p className="font-heading text-[clamp(2rem,5vw,44px)] italic text-cream">
-            A Glimpse of Our World
+          <p className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-4">
+            Gallery
           </p>
+          <h1 className="font-heading text-5xl md:text-6xl font-light text-ink leading-[1.1]">
+            Moments
+            <br />
+            captured
+          </h1>
         </motion.div>
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+        <div className="columns-2 md:columns-3 gap-5 space-y-5">
           {images.map((img, i) => (
             <motion.div
-              key={i}
-              initial={{ opacity: prefersReduced ? 1 : 0, y: prefersReduced ? 0 : 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: prefersReduced ? 0.01 : 0.5,
-                delay: prefersReduced ? 0 : i * 0.08,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-              className="group relative overflow-hidden break-inside-avoid"
+              key={img.alt + i}
+              className="break-inside-avoid overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.025 }}
             >
-              <div className="relative overflow-hidden">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-midnight/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-400">
-                  <p className="font-nav text-xs tracking-[3px] uppercase text-gold">
-                    {img.alt}
-                  </p>
-                </div>
-              </div>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={600}
+                height={600}
+                className="w-full h-auto object-cover"
+                placeholder="blur"
+                blurDataURL={img.blur}
+              />
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 text-center"
-        >
-          <p className="font-body text-sm text-text-muted">
-            Follow us for daily dessert stories
-          </p>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-3 font-nav text-xs tracking-[4px] uppercase text-gold hover:text-gold-dark transition-colors duration-300"
-          >
-            @sweetbutterfly.ankleshwar
-          </a>
-        </motion.div>
       </div>
-    </section>
+    </main>
   );
 }

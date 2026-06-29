@@ -6,32 +6,32 @@ brand
 
 ## Users
 
-Dessert lovers, couples, families, and foodies in Ankleshwar, Gujarat seeking premium dessert experiences. Mobile-first users browsing for dine-in or delivery. Instagram-savvy audience who share food experiences socially.
+Locals and visitors in Ankleshwar, Gujarat looking for a quality coffee shop experience. Primarily cafe-goers aged 18-40 who value Instagram-worthy aesthetics, good coffee, and berry-based treats. They're looking for a cozy spot to hang out with friends, grab a quick coffee, or satisfy a sweet craving.
 
 ## Product Purpose
 
-Sweet Butterfly is Ankleshwar's highest rated dessert cafe (4.8/5). The website exists to convey the magical, enchanted-garden atmosphere of the cafe, showcase signature menu items (waffles, crepes, shakes, custom cakes), provide contact and location info, and drive orders via WhatsApp.
+A beautiful, conversion-driven website for Berry's Cafe in GIDC Ankleshwar. It showcases the cafe's menu, atmosphere, and location to drive foot traffic and social media engagement. Success means visitors feel compelled to visit, follow on Instagram, and order via WhatsApp.
 
 ## Brand Personality
 
-Magical, mysterious, premium, warm. "The Magical Dessert Garden" — a garden where desserts come alive at night. Dark botanical, not pastel. Confident and dreamy.
+Fresh, cheerful, warm, premium-but-approachable coffee culture.
 
 ## Anti-references
 
-- Pastel/pink/bubbly dessert cafe aesthetics (the saturated AI default)
-- Generic 3-column icon grids, card-in-card patterns, standard hero+CTA layouts
-- Bouncing animations, generic food photography grids
-- Light/pastel backgrounds
-- SaaS-like metric sections (big number + small label patterns)
+- No generic AI look — no purple gradients, no dark moody layouts, no generic icon grids
+- Not a corporate template — feels like a real local cafe
+- Not overtly masculine or minimalist-cold — warm and inviting
 
 ## Design Principles
 
-1. **Enchanted darkness, not cute pastels** — The mood is midnight garden, not candy shop
-2. **Every element earns its place** — Minimalist, editorial, no decorative clutter
-3. **Typography as atmosphere** — Large dramatic serif headings carry the emotional weight
-4. **Motion with purpose** — Smooth reveals that guide attention, not bounce or distract
-5. **Mobile-first storytelling** — Every section works in a thumb-scroll rhythm
+1. **Fresh & Cheerful First** — The design should feel like walking into a sunlit cafe. Light backgrounds, warm tones, berry accents.
+2. **Real Cafe, Not Template** — Every section should feel specific to Berry's Cafe (bold headings, actual menu items, real address and contact info).
+3. **Instagram-Ready** — The site itself should be visually shareable. Clean compositions, beautiful spacing, photogenic moments.
+4. **Clarity Over Decoration** — Every element serves a purpose: driving a visit, an order, or a follow. No decorative fluff.
 
 ## Accessibility & Inclusion
 
-WCAG AA compliance. Respect prefers-reduced-motion. All interactive elements need visible states.
+- Responsive across all devices
+- WCAG AA compliant — sufficient color contrast
+- Respects reduced-motion preferences
+- Readable typography hierarchy

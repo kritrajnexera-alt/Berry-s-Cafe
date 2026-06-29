@@ -1,86 +1,104 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { ButterflyGold } from "@/components/Butterfly";
+import { motion } from "framer-motion";
+
+const fadeIn = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.8, ease: "easeOut" },
+};
 
 export default function ContactPage() {
-  const prefersReduced = useReducedMotion();
   return (
-    <section className="relative bg-midnight overflow-hidden pt-28">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <main className="pt-40 pb-32 bg-paper min-h-screen">
+      <div className="max-w-6xl mx-auto px-12 md:px-24">
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <p className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-4">
+            Contact
+          </p>
+          <h1 className="font-heading text-5xl md:text-6xl font-light text-ink leading-[1.1]">
+            Find us
+          </h1>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-20 items-start">
           <motion.div
-            initial={{ opacity: prefersReduced ? 1 : 0, y: prefersReduced ? 0 : 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: prefersReduced ? 0.01 : 0.6 }}
+            className="space-y-10"
+            {...fadeIn}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
           >
-            <h2 className="font-nav text-xs tracking-[4px] uppercase text-gold mb-4">
-              Visit Us
-            </h2>
-            <p className="font-heading text-[clamp(2rem,5vw,44px)] italic text-cream mb-12">
-              Find Your Sweet Escape
-            </p>
-
-            <div className="space-y-8">
-              <div>
-                <h3 className="font-nav text-xs tracking-[4px] uppercase text-text-muted mb-2">
-                  Location
-                </h3>
-                <p className="font-body text-base text-text">
-                  GIDC, Ankleshwar<br />
-                  Gujarat, India
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-nav text-xs tracking-[4px] uppercase text-text-muted mb-2">
-                  Phone
-                </h3>
-                <p className="font-body text-base text-text">
-                  +91 98765 43210
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-nav text-xs tracking-[4px] uppercase text-text-muted mb-2">
-                  Follow Us
-                </h3>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-body text-base text-gold hover:text-gold-dark transition-colors duration-300"
-                >
-                  @sweetbutterfly.ankleshwar
-                </a>
-              </div>
+            <div className="border-b border-rose/15 pb-7">
+              <p className="font-nav text-[11px] uppercase tracking-[0.25em] text-ink/20 mb-3">
+                Address
+              </p>
+              <p className="font-body text-base text-ink/60 leading-relaxed">
+                City Center, GF, G.I.D.C
+                <br />
+                Ankleshwar &mdash; 393001
+              </p>
             </div>
 
-            <motion.a
-              href="https://wa.me/919876543210"
+            <div className="border-b border-rose/15 pb-7">
+              <p className="font-nav text-[11px] uppercase tracking-[0.25em] text-ink/20 mb-3">
+                Phone
+              </p>
+              <a
+                href="tel:+918488945932"
+                className="font-body text-base text-ink/60 hover:text-berry transition-colors duration-300"
+              >
+                +91 84889 45932
+              </a>
+            </div>
+
+            <div className="border-b border-rose/15 pb-7">
+              <p className="font-nav text-[11px] uppercase tracking-[0.25em] text-ink/20 mb-3">
+                Instagram
+              </p>
+              <a
+                href="https://instagram.com/berrys_cafe__"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body text-base text-ink/60 hover:text-berry transition-colors duration-300"
+              >
+                @berrys_cafe__
+              </a>
+            </div>
+
+            <a
+              href="https://wa.me/918488945932"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 mt-12 px-8 py-4 bg-gold text-midnight font-nav text-xs tracking-[4px] uppercase font-bold hover:bg-gold-dark transition-colors duration-300"
+              className="inline-block font-nav text-[11px] uppercase tracking-[0.3em] text-ink/25 hover:text-berry transition-colors duration-500"
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              Order on WhatsApp
-            </motion.a>
+              Message on WhatsApp &rarr;
+            </a>
           </motion.div>
 
           <motion.div
+            className="aspect-[4/3] bg-rose/5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: prefersReduced ? 0.01 : 0.8, delay: prefersReduced ? 0 : 0.3 }}
-            className="hidden lg:flex items-center justify-center"
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           >
-            <ButterflyGold className="w-48 h-36 text-gold opacity-10" />
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.5!2d73.0!3d21.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiA3M8KwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Berry's Cafe Location"
+              className="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity duration-700"
+            />
           </motion.div>
         </div>
       </div>
-    </section>
+    </main>
   );
 }

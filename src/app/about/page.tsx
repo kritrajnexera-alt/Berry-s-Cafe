@@ -1,53 +1,87 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+
+const values = [
+  {
+    title: "Fresh Ingredients",
+    desc: "We source the finest coffee beans and freshest berries because quality starts with what goes in.",
+  },
+  {
+    title: "Happy Vibes",
+    desc: "Warm smiles, cozy corners, and the kind of atmosphere that makes you want to stay a little longer.",
+  },
+  {
+    title: "Local Love",
+    desc: "Proudly serving Ankleshwar, supporting local growers, and building community around great food.",
+  },
+];
+
+const fadeIn = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.8, ease: "easeOut" as const },
+};
 
 export default function AboutPage() {
-  const prefersReduced = useReducedMotion();
   return (
-    <section className="relative bg-midnight-light overflow-hidden pt-28">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <motion.div
-            initial={{ opacity: prefersReduced ? 1 : 0, x: prefersReduced ? 0 : -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: prefersReduced ? 0.01 : 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <span className="font-heading text-[clamp(6rem,15vw,200px)] italic font-light leading-none text-gold block">
-              4.8
-            </span>
-            <span className="font-nav text-xs tracking-[4px] uppercase text-text-muted mt-2 block">
-              ★ Ankleshwar&apos;s Highest Rated
-            </span>
-          </motion.div>
+    <main className="pt-40 pb-32 bg-paper min-h-screen">
+      <div className="max-w-6xl mx-auto px-12 md:px-24">
+        <motion.div
+          className="max-w-2xl mb-32"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <p className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-4">
+            About
+          </p>
+          <h1 className="font-heading text-5xl md:text-6xl font-light text-ink leading-[1.1] mb-10">
+            Our story
+          </h1>
+          <p className="font-body text-base text-ink/50 leading-relaxed mb-5">
+            Berry&rsquo;s Cafe began with a simple idea: create a quiet corner
+            where the people of Ankleshwar could gather over exceptional coffee
+            and lovingly made treats.
+          </p>
+          <p className="font-body text-base text-ink/50 leading-relaxed">
+            Nestled in the heart of GIDC, we bring you handcrafted beverages,
+            fresh berry-infused desserts, and savoury snacks made from the
+            finest ingredients.
+          </p>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: prefersReduced ? 1 : 0, x: prefersReduced ? 0 : 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: prefersReduced ? 0.01 : 0.8, delay: prefersReduced ? 0 : 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-            className="space-y-6"
-          >
-            <h2 className="font-nav text-xs tracking-[4px] uppercase text-gold">
-              Our Story
-            </h2>
-            <p className="font-heading text-[clamp(1.5rem,3.5vw,32px)] italic text-cream leading-[1.3] text-balance">
-              Born from a love for desserts and a dream to create something magical in Ankleshwar.
-            </p>
-            <p className="font-body text-base text-text-muted leading-relaxed">
-              Sweet Butterfly began as a small idea — a place where every dessert is made with
-              care, creativity, and the finest ingredients. From our signature waffles to
-              handcrafted shakes and custom celebration cakes, every item tells a story of
-              passion and quality.
-            </p>
-            <p className="font-body text-base text-text-muted leading-relaxed">
-              Today, we are proud to be Ankleshwar&apos;s highest rated dessert cafe, serving
-              smiles with every plate. Welcome to our garden of sweet dreams.
-            </p>
-          </motion.div>
+        <div className="grid md:grid-cols-3 gap-16 mb-32">
+          {values.map((v, i) => (
+            <motion.div
+              key={v.title}
+              className="border-t border-rose/15 pt-7"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 * i }}
+            >
+              <h3 className="font-heading text-2xl font-light text-ink mb-4">
+                {v.title}
+              </h3>
+              <p className="font-body text-sm text-ink/45 leading-relaxed">
+                {v.desc}
+              </p>
+            </motion.div>
+          ))}
         </div>
-      </div>
 
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-    </section>
+        <motion.blockquote
+          className="text-center max-w-3xl mx-auto"
+          {...fadeIn}
+        >
+          <div className="w-12 h-px bg-rose/30 mx-auto mb-12" />
+          <p className="font-heading text-4xl md:text-5xl font-light italic text-ink/60 leading-[1.2]">
+            &ldquo;Brewing happiness since day one.&rdquo;
+          </p>
+        </motion.blockquote>
+      </div>
+    </main>
   );
 }
