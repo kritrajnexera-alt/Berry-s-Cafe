@@ -11,14 +11,15 @@ const categories = [
   { name: "Hot Beverages", items: 7, icon: "☕" },
 ];
 
-export default function MenuPage() {
+export default function Menu() {
   const prefersReduced = useReducedMotion();
   return (
-    <section className="relative bg-midnight-light overflow-hidden pt-28">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 sm:py-24">
+    <section id="menu" className="relative bg-midnight-light overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-28 sm:py-36">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
@@ -35,7 +36,8 @@ export default function MenuPage() {
             <motion.button
               key={cat.name}
               initial={{ opacity: 0, y: prefersReduced ? 0 : 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
               transition={{
                 duration: prefersReduced ? 0.01 : 0.5,
                 delay: prefersReduced ? 0 : i * 0.1,

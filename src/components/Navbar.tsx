@@ -1,110 +1,129 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ButterflySmall } from "./Butterfly";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/menu", label: "Menu" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Signature", href: "/#signature" },
+  { label: "Menu", href: "/menu" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!open) return;
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
-    }
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, [open]);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  useEffect(() => {
-    if (!open || !menuRef.current) return;
-    const first = menuRef.current.querySelector<HTMLAnchorElement>("a");
-    first?.focus();
-  }, [open]);
+  const closeMenu = () => setMenuOpen(false);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-paper/95 backdrop-blur-sm border-b border-rose/20">
-      <div className="max-w-6xl mx-auto px-8 h-20 flex items-center justify-between">
-        <Link
-          href="/"
-          className="font-heading text-2xl font-light text-ink tracking-tight"
-        >
-          Berry&#8217;s Cafe
-        </Link>
+    <motion.nav
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-midnight/90 backdrop-blur-lg shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-20">
+          <Link href="/" className="flex items-center gap-3 group">
+            <ButterflySmall className="w-8 h-6 text-gold group-hover:scale-110 transition-transform duration-300" />
+            <span className="font-heading text-xl sm:text-2xl italic text-cream tracking-wide">
+              Sweet Butterfly
+            </span>
+          </Link>
 
-        <div className="hidden md:flex items-center gap-10">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={`font-nav text-xs uppercase tracking-[0.2em] transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-berry focus-visible:outline-offset-4 rounded-sm ${
-                pathname === l.href
-                  ? "text-berry"
-                  : "text-ink/50 hover:text-ink"
-              }`}
-              aria-current={pathname === l.href ? "page" : undefined}
-            >
-              {l.label}
-            </Link>
-          ))}
+          <div className="hidden md:flex items-center gap-10">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`font-nav text-xs tracking-[4px] uppercase transition-colors duration-300 ${
+                  isActive(link.href)
+                    ? "text-gold"
+                    : "text-text-muted hover:text-gold"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2 group"
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              className="block w-6 h-[1.5px] bg-gold"
+            />
+            <motion.span
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="block w-6 h-[1.5px] bg-gold"
+            />
+            <motion.span
+              animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              className="block w-6 h-[1.5px] bg-gold"
+            />
+          </button>
         </div>
-
-        <button
-          className="md:hidden text-ink focus-visible:outline-1 focus-visible:outline-berry focus-visible:outline-offset-2 rounded-sm"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            {open ? (
-              <path d="M18 6L6 18M6 6l12 12" />
-            ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
       </div>
 
       <AnimatePresence>
-        {open && (
+        {menuOpen && (
           <motion.div
-            ref={menuRef}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden bg-paper border-b border-rose/20"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-midnight/95 backdrop-blur-xl border-t border-gold/10 overflow-hidden"
           >
-            <div className="px-8 py-6 flex flex-col gap-5">
-              {links.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className={`font-nav text-xs uppercase tracking-[0.2em] transition-colors ${
-                    pathname === l.href
-                      ? "text-berry"
-                      : "text-ink/50 hover:text-ink"
-                  }`}
-                  aria-current={pathname === l.href ? "page" : undefined}
+            <div className="px-6 py-8 flex flex-col gap-6">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
                 >
-                  {l.label}
-                </Link>
+                  <Link
+                    href={link.href}
+                    onClick={closeMenu}
+                    className={`font-nav text-xs tracking-[4px] uppercase transition-colors duration-300 ${
+                      isActive(link.href)
+                        ? "text-gold"
+                        : "text-text-muted hover:text-gold"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

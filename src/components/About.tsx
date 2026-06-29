@@ -2,15 +2,16 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
-export default function AboutPage() {
+export default function About() {
   const prefersReduced = useReducedMotion();
   return (
-    <section className="relative bg-midnight-light overflow-hidden pt-28">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 sm:py-24">
+    <section id="about" className="relative bg-midnight-light overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-28 sm:py-36">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <motion.div
             initial={{ opacity: prefersReduced ? 1 : 0, x: prefersReduced ? 0 : -40 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: prefersReduced ? 0.01 : 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <span className="font-heading text-[clamp(6rem,15vw,200px)] italic font-light leading-none text-gold block">
@@ -23,7 +24,8 @@ export default function AboutPage() {
 
           <motion.div
             initial={{ opacity: prefersReduced ? 1 : 0, x: prefersReduced ? 0 : 40 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: prefersReduced ? 0.01 : 0.8, delay: prefersReduced ? 0 : 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             className="space-y-6"
           >

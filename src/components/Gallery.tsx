@@ -4,24 +4,25 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 const images = [
-  { src: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80", alt: "Dessert" },
-  { src: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80", alt: "Cake" },
-  { src: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80", alt: "Coffee" },
-  { src: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=600&q=80", alt: "Waffles" },
-  { src: "https://images.unsplash.com/photo-1570197785657-d9fe21a8e8e8?w=600&q=80", alt: "Ice Cream" },
-  { src: "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=600&q=80", alt: "Shakes" },
-  { src: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=80", alt: "Crepes" },
-  { src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80", alt: "Berries" },
+  { src: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80", alt: "Dessert", span: "row-span-2" },
+  { src: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80", alt: "Cake", span: "" },
+  { src: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80", alt: "Coffee", span: "" },
+  { src: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=600&q=80", alt: "Waffles", span: "" },
+  { src: "https://images.unsplash.com/photo-1570197785657-d9fe21a8e8e8?w=600&q=80", alt: "Ice Cream", span: "" },
+  { src: "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=600&q=80", alt: "Shakes", span: "col-span-2" },
+  { src: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=80", alt: "Crepes", span: "" },
+  { src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80", alt: "Berries", span: "" },
 ];
 
-export default function GalleryPage() {
+export default function Gallery() {
   const prefersReduced = useReducedMotion();
   return (
-    <section className="relative bg-midnight overflow-hidden pt-28">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 sm:py-24">
+    <section id="gallery" className="relative bg-midnight overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-28 sm:py-36">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
@@ -38,7 +39,8 @@ export default function GalleryPage() {
             <motion.div
               key={i}
               initial={{ opacity: prefersReduced ? 1 : 0, y: prefersReduced ? 0 : 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
               transition={{
                 duration: prefersReduced ? 0.01 : 0.5,
                 delay: prefersReduced ? 0 : i * 0.08,
@@ -67,7 +69,8 @@ export default function GalleryPage() {
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 text-center"
         >

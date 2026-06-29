@@ -1,17 +1,18 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ButterflyGold } from "@/components/Butterfly";
+import { ButterflyGold } from "./Butterfly";
 
-export default function ContactPage() {
+export default function Contact() {
   const prefersReduced = useReducedMotion();
   return (
-    <section className="relative bg-midnight overflow-hidden pt-28">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 sm:py-24">
+    <section id="contact" className="relative bg-midnight overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-28 sm:py-36">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <motion.div
             initial={{ opacity: prefersReduced ? 1 : 0, y: prefersReduced ? 0 : 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: prefersReduced ? 0.01 : 0.6 }}
           >
             <h2 className="font-nav text-xs tracking-[4px] uppercase text-gold mb-4">
@@ -73,7 +74,8 @@ export default function ContactPage() {
 
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: prefersReduced ? 0.01 : 0.8, delay: prefersReduced ? 0 : 0.3 }}
             className="hidden lg:flex items-center justify-center"
           >
