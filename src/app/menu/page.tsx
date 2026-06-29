@@ -85,7 +85,7 @@ export default function MenuPage() {
           <p className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-4">
             Menu
           </p>
-          <h1 className="font-heading text-5xl md:text-6xl font-light text-ink leading-[1.1]">
+          <h1 className="font-heading text-5xl md:text-6xl font-normal text-ink leading-[1.1]">
             What we
             <br />
             serve
@@ -106,7 +106,7 @@ export default function MenuPage() {
               aria-controls={`menu-panel-${cat.id}`}
               className={`font-nav text-[11px] uppercase tracking-[0.25em] px-5 py-3 transition-colors duration-500 focus-visible:outline-1 focus-visible:outline-berry ${
                 active === cat.id
-                  ? "text-ink bg-rose/10"
+                  ? "text-berry bg-rose/20"
                   : "text-ink/20 hover:text-ink/50"
               }`}
             >
@@ -134,15 +134,16 @@ export default function MenuPage() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.03 }}
               >
-                <div className="flex items-baseline justify-between gap-3 mb-2">
-                  <h3 className="font-heading text-xl font-light text-ink/70">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <h3 className="font-heading text-xl font-light text-ink/70 shrink-0">
                     {item.name}
                   </h3>
-                  <span className="font-body text-sm text-ink/25 shrink-0">
+                  <span className="flex-1 border-b border-dotted border-rose/25 min-w-[1rem]" />
+                  <span className="font-heading text-lg text-berry/60 shrink-0">
                     &#8377; {item.price}
                   </span>
                 </div>
-                <p className="font-body text-sm text-ink/35">
+                <p className="font-body text-xs text-stone">
                   {item.desc}
                 </p>
               </motion.div>

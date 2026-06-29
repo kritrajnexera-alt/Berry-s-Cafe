@@ -48,9 +48,9 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className={`font-nav text-xs uppercase tracking-[0.2em] transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-berry focus-visible:outline-offset-4 rounded-sm ${
+              className={`font-nav text-xs   uppercase tracking-[0.15em] transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-berry focus-visible:outline-offset-4 rounded-sm ${
                 pathname === l.href
-                  ? "text-berry"
+                  ? "text-berry underline decoration-berry/50 decoration-1 underline-offset-4"
                   : "text-ink/50 hover:text-ink"
               }`}
               aria-current={pathname === l.href ? "page" : undefined}
@@ -91,9 +91,9 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`font-nav text-xs uppercase tracking-[0.2em] transition-colors ${
+                  className={`font-nav text-xs   uppercase tracking-[0.15em] transition-colors ${
                     pathname === l.href
-                      ? "text-berry"
+                      ? "text-berry underline decoration-berry/50 decoration-1 underline-offset-4"
                       : "text-ink/50 hover:text-ink"
                   }`}
                   aria-current={pathname === l.href ? "page" : undefined}

@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="min-h-screen flex flex-col px-12 md:px-24 pb-28 pt-40 bg-paper">
+      <section className="min-h-screen flex flex-col px-12 md:px-24 pb-20 pt-40 bg-gradient-to-b from-paper via-paper to-rose/5">
         <div className="max-w-6xl mx-auto w-full">
           <motion.p
             className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/20 mb-12"
@@ -27,7 +27,7 @@ export default function Home() {
           </motion.p>
 
           <motion.h1
-            className="font-heading text-8xl md:text-[120px] lg:text-[140px] font-light leading-[0.88] text-ink tracking-tight"
+            className="font-heading text-8xl md:text-[120px] lg:text-[140px] font-normal leading-[0.88] text-ink tracking-[-0.02em]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
@@ -45,6 +45,13 @@ export default function Home() {
           >
             One cup at a time &middot; City Center, GF, G.I.D.C
           </motion.p>
+
+          <motion.div
+            className="w-16 h-0.5 bg-berry/70 mt-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.55 }}
+          />
         </div>
 
         <motion.div
@@ -63,10 +70,10 @@ export default function Home() {
       </section>
 
       {/* ── Our Story ── */}
-      <section className="px-12 md:px-24 py-32 md:py-44 bg-paper border-t border-rose/15">
+      <section className="px-12 md:px-24 py-28 md:py-36 bg-paper border-t border-rose/15">
         <div className="max-w-4xl mx-auto">
           <motion.p
-            className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-16"
+            className="font-nav text-[11px] uppercase tracking-[0.3em] text-berry/70 mb-16"
             {...fadeIn}
           >
             &mdash; Our Story
@@ -102,7 +109,7 @@ export default function Home() {
       </section>
 
       {/* ── Menu Preview ── */}
-      <section className="px-12 md:px-24 py-32 md:py-44 bg-paper border-t border-rose/15">
+      <section className="px-12 md:px-24 py-36 md:py-48 bg-paper border-t border-rose/15">
         <motion.div className="max-w-3xl mx-auto" {...fadeIn}>
           <p className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-16">
             &mdash; From the Kitchen
@@ -125,8 +132,8 @@ export default function Home() {
                 <span className="font-heading text-2xl md:text-3xl font-light text-ink/70 shrink-0">
                   {item.name}
                 </span>
-                <span className="flex-1 border-b border-dotted border-rose/25 min-w-[2rem]" />
-                <span className="font-body text-sm text-ink/30 shrink-0">
+                <span className="flex-1 border-b border-dotted border-berry/20 min-w-[2rem]" />
+                <span className="font-heading text-lg text-berry/60 shrink-0">
                   &#8377; {item.price}
                 </span>
               </motion.div>
@@ -151,7 +158,7 @@ export default function Home() {
       </section>
 
       {/* ── Instagram Strip ── */}
-      <section className="px-12 md:px-24 py-32 md:py-44 bg-paper border-t border-rose/15">
+      <section className="px-12 md:px-24 py-28 md:py-36 bg-muted border-t border-rose/15">
         <div className="max-w-6xl mx-auto">
           <motion.p
             className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-14 text-center"
@@ -161,7 +168,7 @@ export default function Home() {
               href="https://instagram.com/berrys_cafe__"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink/25 hover:text-berry transition-colors duration-500"
+              className="text-berry hover:text-berry/70 transition-colors duration-500"
             >
               @berrys_cafe__
             </a>{" "}
@@ -189,7 +196,7 @@ export default function Home() {
                   alt={img.alt}
                   width={500}
                   height={500}
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover brightness-95 hover:brightness-100 saturate-[0.85] hover:saturate-100 transition-all duration-700"
                   placeholder="blur"
                   blurDataURL={img.blur}
                 />

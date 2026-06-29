@@ -29,7 +29,7 @@ export default function GalleryPage() {
           <p className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-4">
             Gallery
           </p>
-          <h1 className="font-heading text-5xl md:text-6xl font-light text-ink leading-[1.1]">
+          <h1 className="font-heading text-5xl md:text-6xl font-normal text-ink leading-[1.1]">
             Moments
             <br />
             captured

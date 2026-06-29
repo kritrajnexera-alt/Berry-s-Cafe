@@ -1,23 +1,33 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-rose/20 py-10">
-      <div className="max-w-6xl mx-auto px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="font-body text-sm text-ink/40">
-          City Center, GF, G.I.D.C, Ankleshwar &mdash; 393001
-        </p>
-        <div className="flex items-center gap-6 font-body text-sm text-ink/40">
+    <footer className="bg-muted border-t border-rose/20 py-12">
+      <div className="max-w-6xl mx-auto px-8 grid md:grid-cols-3 gap-6 md:gap-8 text-center md:text-left">
+        <div>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-berry mb-3" />
+          <p className="font-body text-sm text-stone">
+            City Center, GF, G.I.D.C
+            <br />
+            Ankleshwar &mdash; 393001
+          </p>
+        </div>
+        <div>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-berry mb-3" />
+          <br />
           <a
             href="tel:+918488945932"
-            className="hover:text-ink transition-colors"
+            className="font-body text-sm text-stone hover:text-berry transition-colors duration-300"
           >
             +91 84889 45932
           </a>
-          <span className="text-rose/40">|</span>
+        </div>
+        <div>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-berry mb-3" />
+          <br />
           <a
             href="https://instagram.com/berrys_cafe__"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-ink transition-colors"
+            className="font-body text-sm text-stone hover:text-berry transition-colors duration-300"
           >
             @berrys_cafe__
           </a>

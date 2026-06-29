@@ -37,7 +37,7 @@ export default function AboutPage() {
           <p className="font-nav text-[11px] uppercase tracking-[0.3em] text-ink/15 mb-4">
             About
           </p>
-          <h1 className="font-heading text-5xl md:text-6xl font-light text-ink leading-[1.1] mb-10">
+          <h1 className="font-heading text-5xl md:text-6xl font-normal text-ink leading-[1.1] mb-10">
             Our story
           </h1>
           <p className="font-body text-base text-ink/50 leading-relaxed mb-5">
@@ -77,7 +77,7 @@ export default function AboutPage() {
           {...fadeIn}
         >
           <div className="w-12 h-px bg-rose/30 mx-auto mb-12" />
-          <p className="font-heading text-4xl md:text-5xl font-light italic text-ink/60 leading-[1.2]">
+          <p className="font-heading text-4xl md:text-5xl font-normal italic text-ink/60 leading-[1.2]">
             &ldquo;Brewing happiness since day one.&rdquo;
           </p>
         </motion.blockquote>
